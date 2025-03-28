@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${title}">編集・削除・追加</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+ <body>
+    <p>編集・削除・追加</p>
+	<form action="/character/edit" method="post">
+		<label>ID:<input class="input" type="text" name="ID"></label><br>
+		<div><input class="search" type="submit" value="検索"/></div>
+    </form>
+
+	<div>
+		<form action="/character/edit" method="post">
+			<input class="list" type="submit" name="showList" value="全表示"/>
+    	</form>
+		<input class="list" type="submit" name="showList" value="編集"/>
+		<input class="list" type="submit" name="showList" value="追加"/>
+	</div>
+
+	<div th:if="${character} !=null" th:object="${character}">
+    	<table>
+    		<tr>
+    			<th>ID</th>
+    			<th>名前</th>
+    			<th>武器</th>
+    			<th>プレイアブル</th>
+    			<th>レアリティ</th>
+          		<th>属性</th>
+          		<th>国</th>
+
+    		</tr>
+    		<tr>
+    			<td th:text="*{ID}">id</td>
+				<td th:text="*{NAME}">名前</td>
+				<td th:text="*{WEAPON}">武器</td>
+				<td th:text="*{PLAYABLE}">ブレイアブル</td>
+				<td th:text="*{RARITY}">レアリティ</td>
+        		<td th:text="*{ATTRIBUTE}">属性</td>
+        		<td th:text="*{COUNTRY}">国</td>
+    		</tr>
+    	</table>
+    </div>
+
+        <div th:if="${characterList} !=null">
+    	<table>
+    		<tr>
+    			<th>ID</th>
+    			<th>名前</th>
+    			<th>武器</th>
+    			<th>プレイアブル</th>
+    			<th>レアリティ</th>
+          		<th>属性</th>
+          		<th>国</th>
+    		</tr>
+    		<tr th:each="character:${characterList}" th:object="${character}">
+    			<td th:text="*{ID}">id</td>
+          		<td th:text="*{NAME}">名前</td>
+          		<td th:text="*{WEAPON}">武器</td>
+          		<td th:text="*{PLAYABLE}">ブレイアブル</td>
+          		<td th:text="*{RARITY}">レアリティ</td>
+          		<td th:text="*{ATTRIBUTE}">属性</td>
+          		<td th:text="*{COUNTRY}">国</td>
+    		</tr>
+    	</table>
+		<div><input class="list" type="submit" name="showList" value="削除"/><input class="list" type="submit" name="showList" value="保存"/></div>
+    </div>
+	
+ </body>
+</html>

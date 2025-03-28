@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="${title}">ログイン</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      p{text-align:center;}
+    </style>
+  </head>
+
+<body>
+  <p><label>ユーザーID<input class="input" type="text" name="userID"></label></p>
+  <p><label>パスワード<input class="input" type="text" name="userID"></label></p>
+  
+
+  <from action="/character/login" methid="post">
+		<button onclick="location.href='/character/login'">ログイン</button>
+	</from>
+  
+</body>
+
